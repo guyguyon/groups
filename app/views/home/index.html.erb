@@ -1,7 +1,32 @@
-<div>Groups</div>
-<div><input type="text" title="search for groups..."/></div>
-<div>
-  <div>group 1</div>
-  <div>group 2</div>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Groups</title>
 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+  <%= stylesheet_link_tag 'all', media: "all", debug: debug_assets? %>
+
+  <%= render :partial => 'bootstrap/js_bootstrap_all' %>
+
+</head>
+<body>
+<div id="window-view" class="main_wrapper">
 </div>
+
+<%= javascript_include_tag "all", debug: debug_assets? %>
+
+<script type="text/javascript">
+    $(function() {
+        window.router = new MBO.Stats.Router({
+            data:{
+                groups: <%= Group.main_page_json %>
+            }
+        });
+        Backbone.history.start();
+    });
+</script>
+
+
+</body>
+</html>
